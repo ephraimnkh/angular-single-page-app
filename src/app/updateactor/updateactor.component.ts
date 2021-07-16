@@ -28,7 +28,6 @@ export class UpdateactorComponent implements OnInit {
   onUpdateActor() {
     let obj = { name: this.fullName, bYear: this.bYear };
     this.dbService.updateActor(this.actorId, obj).subscribe(result => {
-      this.onGetActors();
       this.router.navigate(["/listactors"]);
     });
   }

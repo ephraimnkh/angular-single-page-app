@@ -10,8 +10,8 @@ import { Router } from "@angular/router";
 export class AddmovietoactorComponent implements OnInit {
   actorsDB: any[] = [];
   moviesDB: any[] = [];
-  actorID: string = "";
-  movieID: string = "";
+  actorId: string = "";
+  movieId: string = "";
   movie: any;
   constructor(private dbService: DatabaseService, private router: Router) { }
   //Get all Actors
@@ -26,21 +26,24 @@ export class AddmovietoactorComponent implements OnInit {
       this.moviesDB = data;
     });
   }
-  setActorForMovie(actor) {
-    this.actorID = actor._id;
+  
+  // Set actor id from the select button on Add Movie to Actor 
+  setActorId(item) {
+    this.actorId = item._id;
   }
 
-  setMovieForAdd(movie) {
-    this.movieID = movie._id;
-    this.movie = { "id": this.movieID };
+  // Set movie id from the select button on Add Movie to Actor 
+  setMovieData(item) {
+    this.movieId = item._id;
   }
 
-  //Add movie to actor
-  addMovieToActor() {
-    this.dbService.addMovieToActor(this.actorID, this.movie).subscribe(result => {
+  //Add a movie to actor by using actor id and the movie json object in movieData
+  addMovie() {
+    this.dbService.addMovie(this.actorId, { "id": this.movieId }).subscribe(result => {
       this.router.navigate(["/listactors"]);
     })
   }
+  
   ngOnInit() {
     this.onGetActors();
     this.onGetMovies();

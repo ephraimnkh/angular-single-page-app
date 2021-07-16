@@ -10,7 +10,6 @@ export class ListmoviesComponent implements OnInit {
   private moviesDB: any[] = [];
   constructor(private dbService: DatabaseService) { }
   ngOnInit() {
-    console.log("Hi From ListMovies ngIOnit");
     this.dbService.getMovies().subscribe((data: any[]) => {
       this.moviesDB = data;
     });

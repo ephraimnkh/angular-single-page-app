@@ -1,5 +1,4 @@
 let path = require('path');
-//https://hub.packtpub.com/building-movie-api-express/
 const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
@@ -9,7 +8,7 @@ const app = express();
 app.listen(8080);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-mongoose.connect('mongodb://localhost:27017/movies',{ useNewUrlParser: true } ,function (err) {
+mongoose.connect('mongodb://localhost:27017/movies', { useNewUrlParser: true }, function (err) {
     if (err) {
         return console.log('Mongoose - connection error:', err);
     }
@@ -36,5 +35,4 @@ app.get('/movies/:year1/:year2', movies.getBetweenYears)
 
 //Week 11 client UI using dist folder line
 app.use("/", express.static(path.join(__dirname, "dist/week11SPA")));
-//This line redirects routes not found to angular router
 app.use("/*", express.static(path.join(__dirname, "dist/week11SPA")));

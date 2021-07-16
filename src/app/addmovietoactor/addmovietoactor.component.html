@@ -4,12 +4,12 @@
     <tr>
       <th>Name</th>
       <th>Birth Year</th>
-      <th>Select an Actor!</th>
+      <th>Select!</th>
     </tr>
     <tr *ngFor="let item of actorsDB">
       <td>{{item.name}}</td>
       <td>{{item.bYear}}</td>
-      <td><button type="submit" class="btn btn-primary" (click)="setActorForMovie(item)">Select</button></td>
+      <td><button type="submit" class="btn btn-primary" (click)="setActorId(item)">Select</button></td>
     </tr>
   </table>
   <hr>
@@ -19,15 +19,15 @@
       <tr>
         <th>Title</th>
         <th>Year</th>
-        <th>Select a Movie!</th>
+        <th>Select!</th>
       </tr>
       <tr *ngFor="let item of moviesDB">
         <td>{{item.title}}</td>
         <td>{{item.year}}</td>
-        <td><button type="submit" class="btn btn-primary" (click)="setMovieForAdd(item)">Select</button></td>
+        <td><button type="submit" class="btn btn-primary" (click)="setMovieData(item)">Select</button></td>
       </tr>
     </table>
-    <button type="submit" class="btn btn-success" (click)="addMovieToActor()">Add Movie To Actor</button>
+    <button type="submit" class="btn btn-primary" (click)="addMovie()">Add Movie</button>
     <br>
   </div>
 </div>
